@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+  <script src="{% static 'js/jquery.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+	<link rel="stylesheet" href="{% static 'assets/demo.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/form-login.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <title>Title</title>
+
+<style>
+    .jumbotron {
+{#    background-color: #f4511e;#}
+    color: black;
+    padding: 10px 5px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" style="color: black;">
+  <div style="background-color: #e6e6e6">
+        <h1>  <button type="button" class="btn  btn-info" onclick="fn('/printf/merchantList')" style="color: white">Make new order</button>
+          <button type="button" class="btn  btn-info" onclick="fn('/logout')" style="color: white;float: right;">Logout</button>
+          <center>        <img src="{% static 'images/printer.gif' %}" style="
+          width: 5%;height: 5%;color: black;"/> Printf() </h1> </center>
+      </div>
+      <h3>My Orders :</h3>
+       <table class="table table-striped" style="color: black" >
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Date of Order</th>
+            <th>Merchant name</th>
+            <th>Cost per qty</th>
+            <th>File name</th>
+            <th>Completed</th>
+        </tr>
+        </thead>
+        <tbody >
+            {% for order in myorders%}
+            <tr >
+                <td>{{ order.qty }}</td>
+                <td>{{ order.date_of_order }}</td>
+                <td>{{ order.merchant.name }}</td>
+                <td>{{ order.merchant.cost }}</td>
+                <td><a href="{{ order.docfile.url }}">{{ order.docfile.name }}</a></td>
+                <td>{{ order.completed }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        </table>
+
+
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+
+</body>
+<script>
+    function fn(path)
+    {
+        window.location=path;
+    }
+
+</script>
+</html>

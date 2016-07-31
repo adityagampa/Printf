@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+    <title>Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+  <script src="{% static 'js/jquery.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+	<link rel="stylesheet" href="{% static 'assets/demo.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/form-login.css' %}">
+
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+        <form class="form-login" method="post" action="">{% csrf_token %}
+
+            <div class="form-log-in-with-email" style="color: black">
+
+                <div class="form-white-background">
+
+                    <div class="form-title-row">
+                        <h1>Log in</h1>
+                    </div>
+
+                    {{ form.as_p }}
+
+                    <div class="form-row">
+                        <button type="submit" style="color: black">Log in</button>
+                    </div>
+
+                </div>
+                <a href="adduser/" class="form-create-an-account">Create an account &rarr;</a>
+
+            </div>
+        </form>
+</body>
+</html>

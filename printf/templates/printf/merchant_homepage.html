@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+  <script src="{% static 'js/jquery.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+	<link rel="stylesheet" href="{% static 'assets/demo.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/form-login.css' %}">
+    <meta charset="UTF-8">
+    <style>
+        #id{
+            height: inherit;
+        }
+    </style>
+
+
+</HEAD>
+<body>
+<div class="row" id="id">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8" style="color: black;">
+  <div style="background-color: #e6e6e6">
+        <h1>  <button type="button" class="btn  btn-info " onclick="fn1('/printf/updateMerchant/')" >update merchant</button>
+          <button type="button" class="btn  btn-info" onclick="fn1('/logout')" style="color: white;float: right;">Logout</button>
+          <center>        <img src="{% static 'images/printer.gif' %}" style="
+          width: 5%;height: 5%;color: black;"/> Printf() </h1> </center>
+      </div>
+      <h3>Your Orders :</h3>
+       <table class="table table-striped table-hover" style="color: black" >
+        <thead>
+        <tr>
+            <th>Quantity</th>
+            <th>Date of Order</th>
+            <th>Customer name</th>
+            <th>Cost per qty</th>
+            <th>File name</th>
+            <th>Completed</th>
+        </tr>
+        </thead>
+       <tbody>
+            {% for order in myorders%}
+            <tr onclick="fn({{ order.id }})">
+                <td>{{ order.qty }}</td>
+                <td>{{ order.date_of_order }}</td>
+                <td>{{ order.customer.name }} </td>
+                <td>{{ order.merchant.cost }}</td>
+                <td><a href="{{ order.docfile.url }}">{{ order.docfile.name }}</a></td>
+                <td >{{ order.completed }}</td>
+            </tr>
+            {% endfor %}
+       </tbody>
+        </table>
+</body>
+<script>
+
+    function  fn(order_id) {
+        if (window.confirm('completed?'))
+        {
+            window.location = "/printf/updateOrder/"+order_id;
+        }
+        else
+        {
+
+        }
+    }
+
+    function fn1(path)
+    {
+        window.location=path;
+    }
+
+</script>
+
+</html>

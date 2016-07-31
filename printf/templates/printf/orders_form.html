@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load staticfiles %}
+  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/indexstyle.css' %}">
+  <script src="{% static 'js/jquery.min.js' %} "></script>
+  <script src="{% static 'js/bootstrap.min.js' %} "></script>
+	<link rel="stylesheet" href="{% static 'assets/demo.css'%}">
+	<link rel="stylesheet" href="{% static 'assets/form-basic.css' %}">
+    <meta charset="UTF-8">
+    <style>
+    </style>
+
+</head>
+<body style="color: black">
+        <form class="form-basic" method="post" action="" enctype="multipart/form-data">{% csrf_token %}
+
+
+            <div class="form-title-row">
+                <h1>Upload Document</h1>
+            </div>
+            <div class="form-row">
+                    {{ form.as_p }}
+             </div>
+            <div class="form-row">
+                <input type="submit" value="submit"/>
+            </div>
+        </form>
+</body>
+</html>
